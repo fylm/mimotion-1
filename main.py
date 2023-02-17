@@ -14,7 +14,10 @@ open_get_weather = sys.argv[3]
 # 设置获取天气的地区（上面开启后必填）如：area = "宁波"
 area = sys.argv[4]
 
-pptoken = sys.argv[5]
+print(sys.argv)
+
+pptoken = "01e800c34c17433ea7fbd5f64171281f"
+#sys.argv[5]
 
 # 以下如果看不懂直接默认就行只需改上面
 
