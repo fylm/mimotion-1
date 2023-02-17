@@ -193,7 +193,7 @@ def main(_user, _passwd, min_1, max_1):
     response = requests.post(url, data=data, headers=head).json()
     # print(response)
     result = f"[{now}]\n账号：{user[:3]}****{user[7:]}\n修改步数（{step}）[" + response['message'] + "]\n"
-    push_pushplus("01e800c34c17433ea7fbd5f64171281f",result)
+    push_pushplus(sys.argv[5],result)
     # print(result)
     return result
 
