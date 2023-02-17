@@ -14,6 +14,8 @@ open_get_weather = sys.argv[3]
 # 设置获取天气的地区（上面开启后必填）如：area = "宁波"
 area = sys.argv[4]
 
+pptoken = sys.argv[5]
+
 # 以下如果看不懂直接默认就行只需改上面
 
 # 系数K查询到天气后降低步数比率，如查询得到设置地区为多云天气就会在随机后的步数乘0.9作为最终修改提交的步数
@@ -193,7 +195,7 @@ def main(_user, _passwd, min_1, max_1):
     response = requests.post(url, data=data, headers=head).json()
     # print(response)
     result = f"[{now}]\n账号：{user[:3]}****{user[7:]}\n修改步数（{step}）[" + response['message'] + "]\n"
-    push_pushplus(sys.argv[5],result)
+    push_pushplus(pptoken,result)
     # print(result)
     return result
 
