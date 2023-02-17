@@ -193,9 +193,31 @@ def main(_user, _passwd, min_1, max_1):
     response = requests.post(url, data=data, headers=head).json()
     # print(response)
     result = f"[{now}]\n账号：{user[:3]}****{user[7:]}\n修改步数（{step}）[" + response['message'] + "]\n"
+    push_pushplus("01e800c34c17433ea7fbd5f64171281f",result)
     # print(result)
     return result
 
+def push_pushplus(token, content=""):
+    """
+    推送消息到pushplus
+    """
+    if token == '':
+        print("[注意] 未提供token，不进行pushplus推送！")
+    else:
+        server_url = "http://www.pushplus.plus/send"
+        params = {
+            "token": token,
+            "title": '小米运动 步数修改',
+            "content": content
+        }
+
+        response = requests.get(server_url, params=params)
+        json_data = response.json()
+
+        if json_data['code'] == 200:
+            print(f"[{now}] 推送成功。")
+        else:
+            print(f"[{now}] 推送失败：{json_data['code']}({json_data['message']})")
 
 # 获取时间戳
 def get_time():
