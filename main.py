@@ -228,8 +228,9 @@ def push_pushplus(token, content=""):
 def get_time():
     url = 'https://api.m.jd.com/client.action?functionId=queryMaterialProducts&client=wh5'
     response = requests.get(url, headers=headers).json()
-    t = response['currentTime2']
-    return t
+    #response['currentTime2']
+    t = time.time()
+    return int(t)
 
 
 # 获取app_token
